@@ -19,19 +19,26 @@ Each sample provides a minimum example project, providing a simple addition func
 This library contains four examples:
 
 1. C++ Externs
-    - Easiest to set up and maintain, but requires the target application to use the `hxcpp` target.
-    - Links with the source code at build time, and
-    - Library code cannot be updated without recompiling the executable.
-2. CFFI Legacy
+    - Requires the target application to use the `hxcpp` target, and does not support other targets.
+    - C++ code is placed into a separate folder from the Haxe code for organization.
+    - Links with the source code at build time, and doesn't require a DLL or a separate compilation step.
+    - Linked library cannot be updated without recompiling the executable.
+2. C++ Externs (embedded)
+    - Requires the target application to use the `hxcpp` target, and does not support other targets.
+    - C++ code is embedded into the Haxe code.
+        - Results in cleaner code on smaller projects but unmaintainable code on larger projects.
+    - Embedded into source code at build time, and doesn't require a DLL or separate compilation step.
+    - Linked library cannot be updated without recompiling the executable.
+3. CFFI Legacy
     - Values must be boxed to be sent between C++ and Haxe, and functions are weakly typed (only checked at runtime).
     - Links with the built native library at runtime, thus the `ndll` file must be included with the EXE when distributing.
-        - NDLL file can be updated after building without modifying the executable.
+        - NDLL file can be updated or replaced after building without modifying the executable.
     - Complex configuration required to use with other targets (`hashlink`, `neko`, `python`, `lua`, etc).
-3. CFFI Prime
+4. CFFI Prime
     - Modern upgrade to Haxe CFFI.
     - Values do not need to be boxed and functions are strongly typed (checked at compilation time).
     - Links with the built native library at runtime, thus the `ndll` file must be included with the EXE when distributing.
-        - NDLL file can be updated after building without modifying the executable.
+        - NDLL file can be updated or replaced after building without modifying the executable.
     - Complex configuration required to use with other targets (`hashlink`, `neko`, `python`, `lua`, etc).
 4. [ammer](https://github.com/Aurel300/ammer)
     - Utilizes a library by Aurel300

@@ -1,0 +1,8 @@
+<xml>
+    <files id='haxe'>
+        <compilerflag value='-I${LIB_TESTINTEROP_PATH}/project/common/'/>
+        <file name="${LIB_TESTINTEROP_PATH}/project/common/Adder.cpp" />
+    </files>
+
+    <target id="haxe"></target>
+</xml>

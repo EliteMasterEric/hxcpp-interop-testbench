@@ -1,0 +1,14 @@
+{
+  "dependencies": [
+    {
+      "name": "hxcpp",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "testinterop",
+      "path": "../..",
+      "type": "dev"
+    }
+  ]
+}

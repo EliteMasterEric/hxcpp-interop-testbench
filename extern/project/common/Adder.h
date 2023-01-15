@@ -1,8 +1,6 @@
 #ifndef TESTINTEROP_ADDER_H
 #define TESTINTEROP_ADDER_H
 
-#include "Core.h"
-
 int add_numbers(int a, int b);
 void print_hello();
 int get_seven();
