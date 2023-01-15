@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+    <set name="OUTPUT_DIR" value="../ndll" unless="OUTPUT_DIR" />
+    <set name="DEBUGEXTRA" value="-debug" if="fulldebug" />
+    <set name="LIBSUFFIX" value="${HX_TARGET_SUFFIX}" if="HX_TARGET_SUFFIX" />
+    <set name="LIBSUFFIX" value="${LIBEXTRA}" unless="LIBSUFFIX" />
+
+    <set name="ndll-tool" value="dll" unless="iphone" />
+    <set name="ndll-tool" value="static" if="iphone" />
+
+    <include name="${HXCPP}/build-tool/BuildCommon.xml" />
+
+	<objdir value="../obj/32" if="HXCPP_M32"/>
+	<objdir value="../obj/64" if="HXCPP_M64"/>
+
+    <!-- testinterop's CFFI interface code -->
+    <files id="core">
+        <!-- Add headers to search path. -->
+        <compilerflag value="-Iinclude" />
+
+        <!-- Dependencies of CFFI. -->
+        <depend name="${HXCPP}/include/hx/CFFI.h" />
+
+        <!--
+            The CFFI interface source.
+            You can split this into multiple files for organizational purposes.
+        -->
+        <depend name="common/Core.h" />
+        <depend name="common/Adder.h" />
+        <file name="common/Adder.cpp" />
+    </files>
+
+    <!-- The target NDLL file. -->
+    <target id="NDLL" output="${LIBPREFIX}testinterop${DEBUGEXTRA}${LIBSUFFIX}" tool="linker"
+        toolid="${STD_MODULE_LINK}">
+        <outdir name="${OUTPUT_DIR}/${BINDIR}" />
+
+        <ext value=".so" />
+
+        <section if="windows">
+            <ext value=".ndll" />
+
+            <files id="core" />
+        </section>
+    </target>
+
+    <!-- Redirect to the NDLL target if unspecified. -->
+    <target id="default">
+        <target id="NDLL" />
+    </target>
+</xml>
