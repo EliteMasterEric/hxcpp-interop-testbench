@@ -26,7 +26,7 @@ Name | Requires Separate DLL | Ease of Use† | Supports Other Targets | Support
 `cffi-prime` | YES | 3/5 | ❌ | ✅
 `ammer` | NO | 5/5 | ✅†† | ❌
 
-† This is metric is based on my personal opinion on the amount of effort required to work with each method.
+† This is metric is based on my personal opinion on the amount of effort required to work with each method.  
 †† The current version of `ammer` is targeted at `hxcpp` and `hashlink`, with more targets in development.  
 
 1. `extern`: C++ Extern Project
