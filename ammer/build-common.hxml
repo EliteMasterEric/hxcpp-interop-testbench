@@ -1,0 +1,6 @@
+--library ammer
+-D ammer.lib.testinterop.abi=cpp
+-D ammer.lib.testinterop.include=project
+-D ammer.lib.testinterop.library=project
+--class-path src
+--main Main

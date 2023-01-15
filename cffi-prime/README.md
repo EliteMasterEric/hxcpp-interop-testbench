@@ -20,3 +20,4 @@ Demonstration of C++ interop using CFFI PRIME.
     - `LibTestInterop.hx` is reworked, and now relies on `Loader.hx`.
 - CFFI PRIME includes support for compile-time type checking via macros.
 - CFFI PRIME can generally be expected to have better performance than CFFI legacy.
+- Compiled project CANNOT run without the `testinterop.ndll` file in a nearby directory.

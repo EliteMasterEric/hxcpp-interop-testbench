@@ -1,0 +1,16 @@
+{
+  "dependencies": [
+    {
+      "name": "ammer",
+      "type": "git",
+      "dir": null,
+      "ref": "b922a96",
+      "url": "https://github.com/Aurel300/ammer"
+    },
+    {
+      "name": "hxcpp",
+      "type": "haxelib",
+      "version": null
+    }
+  ]
+}

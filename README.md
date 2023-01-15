@@ -16,40 +16,52 @@ This repository demonstrates using the various tools available to Haxe to direct
 
 Each sample provides a minimum example project, providing a simple addition function to demonstrate how to allow the C++ code to receive and return values. The sample libraries are made for pure Haxe; they do not require any additional libraries (such as Lime) to properly build, but should be fully compatible with them.
 
-This library contains four examples:
+This library contains five examples:
 
-1. C++ Externs
+Name | Requires Separate DLL | Ease of Use | Supports Haxelibs
+---|---|---|---
+`extern` | NO | 1/5 | ✅
+`extern-embedded` | NO | 4/5 | ✅
+`cffi-legacy` | YES | 2/5 | ✅
+`cffi-prime` | YES | 3/5 | ✅
+`ammer` | NO | 5/5 | ❌
+
+1. `extern`: C++ Extern Project
     - Requires the target application to use the `hxcpp` target, and does not support other targets.
     - C++ code is placed into a separate folder from the Haxe code for organization.
     - Links with the source code at build time, and doesn't require a DLL or a separate compilation step.
+        - Compiled project MAY run without any `testinterop.ndll` file.
     - Linked library cannot be updated without recompiling the executable.
-2. C++ Externs (embedded)
+2. `extern-embedded`: C++ Embedded Externs
     - Requires the target application to use the `hxcpp` target, and does not support other targets.
     - C++ code is embedded into the Haxe code.
         - Results in cleaner code on smaller projects but unmaintainable code on larger projects.
     - Embedded into source code at build time, and doesn't require a DLL or separate compilation step.
+        - Compiled project MAY run without any `testinterop.ndll` file.
     - Linked library cannot be updated without recompiling the executable.
-3. CFFI Legacy
+3. `cffi-legacy` CFFI Legacy
     - Values must be boxed to be sent between C++ and Haxe, and functions are weakly typed (only checked at runtime).
     - Links with the built native library at runtime, thus the `ndll` file must be included with the EXE when distributing.
+        - Compiled project CANNOT run without the `testinterop.ndll` file in a nearby directory.
         - NDLL file can be updated or replaced after building without modifying the executable.
     - Complex configuration required to use with other targets (`hashlink`, `neko`, `python`, `lua`, etc).
-4. CFFI Prime
+4. `cffi-prime` CFFI Prime
     - Modern upgrade to Haxe CFFI.
     - Values do not need to be boxed and functions are strongly typed (checked at compilation time).
     - Links with the built native library at runtime, thus the `ndll` file must be included with the EXE when distributing.
+        - Compiled project CANNOT run without the `testinterop.ndll` file in a nearby directory.
         - NDLL file can be updated or replaced after building without modifying the executable.
     - Complex configuration required to use with other targets (`hashlink`, `neko`, `python`, `lua`, etc).
-4. [ammer](https://github.com/Aurel300/ammer)
+5. [ammer](https://github.com/Aurel300/ammer)
     - Utilizes a library by Aurel300
     - Vastly simplified linking process
     - No additional configuration needed to link against `hashlink` and `lua` (other targets in development)
     - Complex configuration required to use linked code as a haxelib (library packaging in development)
 
+
 ## Useful Resources
 
 - https://github.com/snowkit/hxcpp-guide/issues/1
 - https://community.haxe.org/t/some-questions-about-the-ammer-library-ffi-haxelib-externs/2271
-
 - https://github.com/Aurel300/ammer
 - https://github.com/larsiusprime/steamwrap

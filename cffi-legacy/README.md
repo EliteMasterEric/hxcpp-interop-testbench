@@ -24,3 +24,4 @@ Demonstration of C++ interop using CFFI (legacy tools).
 - CFFI legacy requires functions to be loaded at runtime.
 - CFFI legacy has no support for type checking.
 - CFFI legacy can generally be expected to have worse performance than CFFI PRIME.
+- Compiled project CANNOT run without the `testinterop.ndll` file in a nearby directory.

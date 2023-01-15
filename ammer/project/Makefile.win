@@ -1,0 +1,12 @@
+all: testinterop.dll tmp.testinterop.h
+
+testinterop.dll: testinterop.obj
+	cl /LD testinterop.obj
+
+testinterop.obj: testinterop.cpp
+	cl /c testinterop.cpp
+
+tmp.testinterop.h: testinterop.h
+	copy testinterop.h tmp.testinterop.h
+
+.PHONY: all
