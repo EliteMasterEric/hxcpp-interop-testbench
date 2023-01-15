@@ -19,7 +19,7 @@ Each sample provides a minimum example project, providing a simple addition func
 This library contains five examples:
 
 Name | Requires Separate DLL | Ease of Use* | Supports Other Targets | Supports Haxelibs
----|---|---|---
+---|---|---|---|---
 `extern` | NO | 1/5 | ❌ | ✅
 `extern-embedded` | NO | 4/5 | ❌ | ✅
 `cffi-legacy` | YES | 2/5 | ❌ | ✅
