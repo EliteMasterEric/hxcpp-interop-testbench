@@ -1,0 +1,6 @@
+build-common.hxml
+-D ammer.hl.hlInclude=C:/Haxe/hl-1.12.0-win/include
+-D ammer.hl.hlLibrary=C:/Haxe/hl-1.12.0-win
+-D ammer.hl.build=bin/hl/stubs
+-D ammer.hl.output=bin/hl/hdll
+--hl bin/hl/main.hl

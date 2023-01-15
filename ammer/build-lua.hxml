@@ -1,0 +1,3 @@
+build-common.hxml
+-D ammer.lua.luaInclude=C:\Program Files (x86)\LuaRocks\include
+--lua bin/lua/sample.lua
