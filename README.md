@@ -18,17 +18,17 @@ Each sample provides a minimum example project, providing a simple addition func
 
 This library contains six examples:
 
-Name | Requires Separate DLL | Ease of Use* | Supports Other Targets | Supports Haxelibs
+Name | Requires Separate DLL | Ease of Use† | Supports Other Targets | Supports Haxelibs
 ---|---|---|---|---
 `extern` | NO | 1/5 | ❌ | ✅
 `extern-embedded` | NO | 4/5 | ❌ | ✅
 `function-code` | NO | 4/5 | ✅ | ✅
 `cffi-legacy` | YES | 2/5 | ❌ | ✅
 `cffi-prime` | YES | 3/5 | ❌ | ✅
-`ammer` | NO | 5/5 | ✅** | ❌
+`ammer` | NO | 5/5 | ✅†† | ❌
 
-* This is metric is based on my personal opinion from the effort required to get each example working.
-** The current version of `ammer` is targeted at `hxcpp` and `hashlink`.
+† This is metric is based on my personal opinion on the amount of effort required to work with each method.  
+†† The current version of `ammer` is targeted at `hxcpp` and `hashlink`, with more targets in development.  
 
 1. `extern`: C++ Extern Project
     - Requires the target application to use the `hxcpp` target, and does not support other targets.
