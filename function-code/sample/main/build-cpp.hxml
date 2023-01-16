@@ -1,0 +1,4 @@
+build-common.hxml
+--library hxcpp
+--cpp bin/cpp
+-D HXCPP_VERBOSE

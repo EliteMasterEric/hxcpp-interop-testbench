@@ -16,12 +16,13 @@ This repository demonstrates using the various tools available to Haxe to direct
 
 Each sample provides a minimum example project, providing a simple addition function to demonstrate how to allow the C++ code to receive and return values. The sample libraries are made for pure Haxe; they do not require any additional libraries (such as Lime) to properly build, but should be fully compatible with them.
 
-This library contains five examples:
+This library contains six examples:
 
 Name | Requires Separate DLL | Ease of Use* | Supports Other Targets | Supports Haxelibs
 ---|---|---|---|---
 `extern` | NO | 1/5 | ❌ | ✅
 `extern-embedded` | NO | 4/5 | ❌ | ✅
+`function-code` | NO | 4/5 | ✅ | ✅
 `cffi-legacy` | YES | 2/5 | ❌ | ✅
 `cffi-prime` | YES | 3/5 | ❌ | ✅
 `ammer` | NO | 5/5 | ✅** | ❌
@@ -42,20 +43,26 @@ Name | Requires Separate DLL | Ease of Use* | Supports Other Targets | Supports 
     - Embedded into source code at build time, and doesn't require a DLL or separate compilation step.
         - Compiled project MAY run without any `testinterop.ndll` file.
     - Linked library cannot be updated without recompiling the executable.
-3. `cffi-legacy` CFFI Legacy
+3. `function-code`: functionCode annotation
+    - Embeds the string directly into the compiled application, replacing any haxe expressions in the function's method body.
+    - Easier to sort out functions than `extern-embedded` but harder to make them call each other.
+    - Works on `C++` and `C#` targets.
+    - NOT working on `Python` targets (the `functionCode` annotation is ignored)
+        - It would be cool if you could use compiler defines to choose which language-specific code to use but guess not.
+4. `cffi-legacy` CFFI Legacy
     - Values must be boxed to be sent between C++ and Haxe, and functions are weakly typed (only checked at runtime).
     - Links with the built native library at runtime, thus the `ndll` file must be included with the EXE when distributing.
         - Compiled project CANNOT run without the `testinterop.ndll` file in a nearby directory.
         - NDLL file can be updated or replaced after building without modifying the executable.
     - Complex configuration required to use with other targets (`hashlink`, `neko`, `python`, `lua`, etc).
-4. `cffi-prime` CFFI Prime
+5. `cffi-prime` CFFI Prime
     - Modern upgrade to Haxe CFFI.
     - Values do not need to be boxed and functions are strongly typed (checked at compilation time).
     - Links with the built native library at runtime, thus the `ndll` file must be included with the EXE when distributing.
         - Compiled project CANNOT run without the `testinterop.ndll` file in a nearby directory.
         - NDLL file can be updated or replaced after building without modifying the executable.
     - Complex configuration required to use with other targets (`hashlink`, `neko`, `python`, `lua`, etc).
-5. [ammer](https://github.com/Aurel300/ammer)
+6. [ammer](https://github.com/Aurel300/ammer)
     - Utilizes a library by Aurel300
     - Vastly simplified linking process
     - No additional configuration needed to link against `hashlink` and `lua` (other targets in development)
